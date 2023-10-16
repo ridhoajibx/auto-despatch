@@ -14,7 +14,7 @@ import DatePicker from "react-datepicker";
 import GaugeChart from "@/components/chart/GaugeChart";
 import HeaderTemperature from "@/components/Icons/HeaderTemperature";
 import BarChart from "@/components/chart/BarChart";
-import AreaChart from "@/components/chart/Areachart";
+import AreaChart from "@/components/chart/AreaChart";
 import PieChart from "@/components/chart/PieChart";
 
 const Dashboard: React.FC = () => {
