@@ -129,9 +129,9 @@ const Dashboard: React.FC = () => {
         <div className="w-full h-full grid grid-cols-1 sm:grid-cols-4 gap-3 sm:gap-6">
           <ScrollShadow
             hideScrollBar
-            className="rounded-lg w-full sm:col-span-3 max-h-[650px]"
+            className="w-full sm:col-span-3 max-h-[650px] rounded-xl"
           >
-            <div className="w-full flex flex-col gap-2 p-4">
+            <div className="w-full flex flex-col gap-2">
               <div className="w-full flex flex-col gap-3 sm:gap-6">
                 {/* monthly filling */}
                 <Card className="">

@@ -1,12 +1,12 @@
-import React from "react";
+import { faker } from "@faker-js/faker";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   Title,
   Tooltip,
-  Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 // import faker from 'faker';
@@ -19,16 +19,40 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
+let labels: any[] = [
+  "1 Oct",
+  "2 Oct",
+  "3 Oct",
+  "4 Oct",
+  "5 Oct",
+  "6 Oct",
+  "7 Oct",
+  "8 Oct",
+  "9 Oct",
+  "10 Oct",
+  "11 Oct",
+  "12 Oct",
+];
 export const customData = {
-  labels: ["1 Oct", "2 Oct", "3 Oct", "4 Oct", "5 Oct", "6 Oct", "7 Oct", "8 Oct", "9 Oct", "10 Oct", "11 Oct", "12 Oct"],
+  labels,
   datasets: [
     {
-      label: "",
-      data: [50, 30, 20, 100, 40, 80, 50, 30, 20, 100, 40, 80],
-      backgroundColor: ["#0E5CBE"],
-      borderColor: ["#FFFFFF"],
+      type: "line" as const,
+      label: "Average",
+      backgroundColor: "red",
+      data: labels.map(() => faker.datatype.number({ min: 50, max: 50 })),
+      borderColor: "red",
       borderWidth: 2,
+      pointStyle: 'line'
+    },
+    {
+      type: "bar" as const,
+      label: "Dataset 1",
+      borderColor: "#0E5CBE",
+      backgroundColor: "#0E5CBE",
+      borderWidth: 2,
+      fill: false,
+      data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
       borderRadius: 5,
     },
   ],

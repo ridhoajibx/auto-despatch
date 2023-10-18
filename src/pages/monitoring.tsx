@@ -1,41 +1,18 @@
-import React, { useState } from "react";
 import DefaultLayouts from "@/layouts";
 import { Header } from "@/layouts/Header";
 import {
   Button,
   Card,
   CardBody,
-  CardFooter,
   CardHeader,
   Divider,
-  Image,
-  Link,
   ScrollShadow,
-  Selection,
 } from "@nextui-org/react";
-import {
-  MdArrowDropDown,
-  MdArrowForward,
-  MdArrowRight,
-  MdCalendarMonth,
-  MdTimelapse,
-} from "react-icons/md";
+import { MdArrowDropDown, MdArrowForward, MdTimelapse } from "react-icons/md";
 import FillTanki from "@/components/Icons/FillTanki";
+import { FC } from "react";
 
-const Monitoring: React.FC = () => {
-  const [page, setPage] = useState<number>(1);
-  const [limit, setLimit] = useState<number>(5);
-
-  const myArr: any[] = [];
-
-  const [mySet, setMySet] = useState<Selection>(new Set(myArr));
-
-  console.log({ myArr, mySet }, "result");
-
-  console.log(mySet == "all", "result-1");
-
-  // console.log(mySet, "result-2");
-
+const Monitoring: FC = () => {
   return (
     <DefaultLayouts
       title="Live Monitoring"
@@ -44,7 +21,9 @@ const Monitoring: React.FC = () => {
       <Header />
       <div className="relative w-full h-full container mx-auto p-4">
         <div className="w-full py-4">
-          <h1 className="font-bold text-2xl sm:text-3xl">Real-time Monitoring</h1>
+          <h1 className="font-bold text-2xl sm:text-3xl">
+            Real-time Monitoring
+          </h1>
         </div>
 
         <div className="w-full h-full grid grid-cols-1 sm:grid-cols-5 gap-3 sm:gap-6">
@@ -55,8 +34,12 @@ const Monitoring: React.FC = () => {
                   <h3 className="text-gray-5">Oil Filled</h3>
                   <div className="text-2xl font-bold">450 L</div>
                   <div className="flex items-center gap-1 text-xs text-danger">
-                    <span><MdArrowDropDown className="w-4 h-4" /> </span>
-                    <p><span>500</span>  From yesterday</p>
+                    <span>
+                      <MdArrowDropDown className="w-4 h-4" />{" "}
+                    </span>
+                    <p>
+                      <span>500</span> From yesterday
+                    </p>
                   </div>
                 </div>
 
@@ -64,8 +47,12 @@ const Monitoring: React.FC = () => {
                   <h3 className="text-gray-5">Total Vehicle</h3>
                   <div className="text-2xl font-bold">15 Unit</div>
                   <div className="flex items-center gap-1 text-xs text-danger">
-                    <span><MdArrowDropDown className="w-4 h-4" /> </span>
-                    <p><span>32</span> From yesterday</p>
+                    <span>
+                      <MdArrowDropDown className="w-4 h-4" />{" "}
+                    </span>
+                    <p>
+                      <span>32</span> From yesterday
+                    </p>
                   </div>
                 </div>
 
@@ -73,8 +60,12 @@ const Monitoring: React.FC = () => {
                   <h3 className="text-gray-5">Ave Temperature</h3>
                   <div className="text-2xl font-bold">50 ˚C</div>
                   <div className="flex items-center gap-1 text-xs text-success">
-                    <span><MdArrowDropDown className="w-4 h-4" /> </span>
-                    <p><span>2˚</span> slightly cooler than yesteday</p>
+                    <span>
+                      <MdArrowDropDown className="w-4 h-4" />{" "}
+                    </span>
+                    <p>
+                      <span>2˚</span> slightly cooler than yesteday
+                    </p>
                   </div>
                 </div>
 
@@ -82,8 +73,13 @@ const Monitoring: React.FC = () => {
                   <h3 className="text-gray-5">Ave Time Spent</h3>
                   <div className="text-2xl font-bold">12 min 42 sec</div>
                   <div className="flex items-center gap-1 text-xs text-success">
-                    <span><MdArrowDropDown className="w-4 h-4" /> </span>
-                    <p><span className="font-semibold">1 Min</span> faster than yesterday</p>
+                    <span>
+                      <MdArrowDropDown className="w-4 h-4" />{" "}
+                    </span>
+                    <p>
+                      <span className="font-semibold">1 Min</span> faster than
+                      yesterday
+                    </p>
                   </div>
                 </div>
               </CardBody>
@@ -93,7 +89,7 @@ const Monitoring: React.FC = () => {
             hideScrollBar
             className="bg-[#DAE3EB] rounded-lg w-full sm:col-span-4 max-h-[650px]"
           >
-            <div className="w-full grid grid-cols-2 gap-2 p-4">
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 p-4">
               <div className="w-full flex flex-col gap-3 sm:gap-6">
                 <Card className="max-w-[500px]">
                   <CardHeader className="w-full">
@@ -139,10 +135,9 @@ const Monitoring: React.FC = () => {
 
                 {/* full tanki */}
                 <Card className="max-w-[500px]">
-                  <CardHeader className="w-full">
-                    <div className="w-full">
-                      <FillTanki isFill className="w-96 mx-auto text-black" />
-                      {/* <Tank /> */}
+                  <CardHeader className="w-full p-0">
+                    <div className="w-full relative">
+                      <FillTanki isFill className="z-999 w-96 mx-auto xl:mx-10 text-black" />
                     </div>
                   </CardHeader>
 
@@ -251,10 +246,10 @@ const Monitoring: React.FC = () => {
                       <p className="font-bolds">--:--:--</p>
                     </div>
                     <Divider />
-                    <div className="w-full">
+                    <div className="w-full relative">
                       <FillTanki
                         isFill={false}
-                        className="w-96 mx-auto text-black"
+                        className="w-96 xl:mx-10 text-black"
                       />
                       {/* <Tank /> */}
                     </div>

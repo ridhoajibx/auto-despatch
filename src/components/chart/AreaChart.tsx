@@ -27,9 +27,15 @@ export const customOptions = {
   responsive: true,
   plugins: {
     legend: {
-      display: false,
+      display: true,
       position: "top" as const,
       align: "end" as const,
+      labels: {
+        borderRadius: 3,
+        boxWidth: 16,
+        useBorderRadius: true,
+        pointStyle: "circle",
+      },
     },
     title: {
       display: false,
@@ -40,25 +46,49 @@ export const customOptions = {
   },
 };
 
-const labels = ["1 Oct", "2 Oct", "3 Oct", "4 Oct", "5 Oct", "6 Oct", "7 Oct", "8 Oct", "9 Oct", "10 Oct", "11 Oct", "12 Oct"];
+const labels = [
+  "1 Oct",
+  "2 Oct",
+  "3 Oct",
+  "4 Oct",
+  "5 Oct",
+  "6 Oct",
+  "7 Oct",
+  "8 Oct",
+  "9 Oct",
+  "10 Oct",
+  "11 Oct",
+  "12 Oct",
+];
 
 export const customData = {
   labels,
   datasets: [
+    // {
+    //   fill: true,
+    //   label: "Dataset",
+    //   data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+    //   borderColor: ["rgb(250, 192, 2)"],
+    //   backgroundColor: "rgba(250, 192, 2, 0.5)",
+    //   tension: 0.4,
+    // },
     {
-      fill: true,
-      label: "Dataset 1",
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      borderColor: "rgb(53, 162, 235)",
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
-      tension: 0.4,
+      type: "line" as const,
+      label: "Average",
+      backgroundColor: "red",
+      data: labels.map(() => faker.datatype.number({ min: 500, max: 500 })),
+      borderColor: "red",
+      borderWidth: 2,
+      pointStyle: "line",
     },
     {
+      type: "line" as const,
+      label: "Temperature",
+      borderColor: "rgb(250, 192, 2)",
+      backgroundColor: "rgba(250, 192, 2, 0.2)",
+      borderWidth: 2,
       fill: true,
-      label: "Dataset 2",
       data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      borderColor: ["rgb(250, 192, 2)"],
-      backgroundColor: "rgba(250, 192, 2, 0.5)",
       tension: 0.4,
     },
   ],
