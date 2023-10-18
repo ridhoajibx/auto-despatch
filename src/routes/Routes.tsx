@@ -9,6 +9,7 @@ import LoginPage from "../pages/auth/login";
 import Dashboard from "../pages/dashboard";
 import Monitoring from "@/pages/monitoring";
 import Users from "@/pages/users";
+import Datalog from "@/pages/datalog";
 
 type RoutesProps = {
   isLogin: boolean
