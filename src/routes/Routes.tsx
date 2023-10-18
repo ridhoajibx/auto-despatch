@@ -8,7 +8,6 @@ import {
 import LoginPage from "../pages/auth/login";
 import Dashboard from "../pages/dashboard";
 import Monitoring from "@/pages/monitoring";
-import Datalog from "@/pages/dataLog";
 import Users from "@/pages/users";
 
 type RoutesProps = {
