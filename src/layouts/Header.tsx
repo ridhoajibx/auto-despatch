@@ -13,6 +13,7 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
   User,
+  Button,
 } from "@nextui-org/react";
 import { Fragment, useState } from "react";
 import { AcmeLogo } from "@/components/AcmeLogo";
@@ -34,16 +35,11 @@ export const Header = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
+    { name: "Live Monitoring", pathname: "/" },
+    { name: "Dashboard", pathname: "/dashboard" },
+    { name: "Data Log", pathname: "/data-log" },
+    { name: "User List", pathname: "/users" },
+    { name: "Log Out", pathname: "/" },
   ];
 
   return (
@@ -101,7 +97,6 @@ export const Header = () => {
               </NavbarItem>
             );
           })}
-          
         </NavbarContent>
       </NavbarContent>
 
@@ -145,14 +140,10 @@ export const Header = () => {
           >
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
+              <p className="font-semibold">janedoe@example.com</p>
             </DropdownItem>
             <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
             <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
             <DropdownItem key="logout" color="danger">
               Log Out
             </DropdownItem>
@@ -160,25 +151,38 @@ export const Header = () => {
         </Dropdown>
       </NavbarContent>
 
-      <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <LinkUI
-              className="w-full"
-              color={
-                index === 2
-                  ? "warning"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              href="#"
-              size="lg"
+      <NavbarMenu className="w-full">
+        {menuItems.map((route: any, index: any) => {
+          if (menuItems.length - 1 == index) {
+            return (
+              <Button key={index} color="danger" variant="light"
+                className="text-gray-6 text-sm rounded-lg text-left justify-start"
+              >
+                {route?.name}
+              </Button>
+            );
+          }
+          if (route?.pathname == location.pathname) {
+            return (
+              <Link
+                key={index}
+                className="text-gray-6 text-sm hover:bg-primary hover:text-white rounded-lg px-4 py-3 font-bold"
+                to={route?.pathname}
+              >
+                {route?.name}
+              </Link>
+            );
+          }
+          return (
+            <Link
+              key={index}
+              className="text-gray-6 text-sm hover:bg-primary hover:text-white rounded-lg px-4 py-3"
+              to={route?.pathname}
             >
-              {item}
-            </LinkUI>
-          </NavbarMenuItem>
-        ))}
+              {route?.name}
+            </Link>
+          );
+        })}
       </NavbarMenu>
     </Navbar>
   );
