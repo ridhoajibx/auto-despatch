@@ -39,7 +39,7 @@ const HeaderTemperature = (props: any) => {
           y2="133.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#FF0000" />
+          <stop stopColor="#FF0000" />
           <stop offset="0.229167" stop-color="#FF9B2B" />
           <stop offset="0.515625" stop-color="#FFEC42" />
           <stop offset="0.723958" stop-color="#28EC30" />

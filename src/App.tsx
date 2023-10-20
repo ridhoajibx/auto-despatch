@@ -1,17 +1,23 @@
-import { BrowserRouter } from "react-router-dom";
-// import { useAppSelector } from "@/redux/Hooks";
-// import { selectAuth } from "@/redux/features/AuthenticationReducers";
+import { BrowserRouter, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "@/redux/Hooks";
+
 import Routes from "@/routes/Routes";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { useEffect, useState } from "react";
+import { getAuthMe, selectAuth } from "./redux/features/AuthenticationReducers";
 
 const App: React.FC = () => {
-  // const { isLogin } = useAppSelector(selectAuth);
-  // using env in vite
-  const ENV = import.meta.env.VITE_APP_API_URL;
-  console.log(ENV, 'cek-env')
+  const API_URL = import.meta.env.VITE_APP_API_URL;
+  axios.defaults.baseURL = API_URL;
+
+  const token = Cookies.get("accessToken");
+  const { isLogin } = useAppSelector(selectAuth);
+
   return (
-      <BrowserRouter>
-        <Routes isLogin={true} />
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes isLogin={isLogin} />
+    </BrowserRouter>
   );
 };
 
