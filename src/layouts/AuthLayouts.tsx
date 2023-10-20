@@ -1,21 +1,40 @@
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/Hooks";
 import { getAuthMe, selectAuth } from "@/redux/features/AuthenticationReducers";
+import withoutAuthentication from "./WithoutAuthentication";
+import { Spinner } from "@nextui-org/react";
 
 type Props = {
   token?: any;
-  children: any;
+  children?: React.ReactNode | any;
   className?: string,
   title?: string
 };
 
-function AuthLayouts(props: Props) {
+const AuthLayouts: React.FC<Props> = (props) => {
   const { children, className, title } = props;
   document.title = `${title} || Auto Despatch`;
 
   const token = Cookies.get("accessToken");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1000);
+  }, []);
+
+  if (loading) {
+    return (
+      <div
+        id="preloader"
+        className="fixed left-0 top-0 z-999999 h-screen flex items-center justify-center w-screen bg-white"
+      >
+        <Spinner label="Loading..." color="primary" />
+      </div>
+    );
+  }
+
   return (
     <div className="">
       {/* <!-- ===== Page Wrapper Start ===== --> */}
@@ -39,3 +58,4 @@ function AuthLayouts(props: Props) {
 }
 
 export default AuthLayouts;
+// export default withoutAuthentication(AuthLayouts);
