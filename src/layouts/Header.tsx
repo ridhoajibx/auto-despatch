@@ -21,7 +21,7 @@ import {
   ModalBody,
   ModalFooter,
 } from "@nextui-org/react";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 // import { SearchIcon } from "../components/SearchIcon";
 import { MdCamera, MdSettings } from "react-icons/md";
 import Logo from "@/components/Icons/Logo";
@@ -43,7 +43,7 @@ export const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const { isLogin } = useAppSelector(selectAuth);
+  const { isLogin, data } = useAppSelector(selectAuth);
 
   const dispatch = useAppDispatch();
 
@@ -67,7 +67,6 @@ export const Header = () => {
     );
   };
 
-
   useEffect(() => {
     if(token) {
       dispatch(getAuthMe({ token, callback: () => {
@@ -75,6 +74,12 @@ export const Header = () => {
       } }))
     }
   }, [token]);
+
+  const user = useMemo(() => {
+    const { user } = data;
+    if(data) return user
+    return {}
+  }, [data])
 
   return (
     <Fragment>
@@ -137,8 +142,8 @@ export const Header = () => {
 
         <NavbarContent as="div" className="items-center" justify="end">
           <User
-            name={<span className="hidden sm:flex">Jane Doe</span>}
-            description={<span className="hidden sm:flex">Admin</span>}
+            name={<span className="hidden sm:flex">{user?.fullName}</span>}
+            description={<span className="hidden sm:flex">{user?.role}</span>}
             avatarProps={{
               src: "https://i.pravatar.cc/150?u=a04258114e29026702d",
               size: "sm",
@@ -175,7 +180,7 @@ export const Header = () => {
             >
               <DropdownItem key="profile" className="h-14 gap-2">
                 <p className="font-semibold">Signed in as</p>
-                <p className="font-semibold">janedoe@example.com</p>
+                <p className="font-semibold">{user?.username}</p>
               </DropdownItem>
               <DropdownItem key="settings">My Settings</DropdownItem>
               <DropdownItem key="configurations">Configurations</DropdownItem>

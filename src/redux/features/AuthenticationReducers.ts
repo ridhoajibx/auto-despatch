@@ -89,7 +89,7 @@ export const webLogin = createAsyncThunk<any, AuthData, { state: RootState }>(
       if (status == 200) {
         Cookies.set("accessToken", data?.accessToken);
         Cookies.set("refreshToken", data?.refreshToken);
-        toast.dark("Sign in successfully!");
+        toast.info("Sign in successfully!");
         params.callback();
         return data;
       } else {
@@ -98,7 +98,7 @@ export const webLogin = createAsyncThunk<any, AuthData, { state: RootState }>(
     } catch (error: any) {
       const { data, status } = error.response;
       let newError: any = { message: data.message[0] };
-      toast.dark(newError?.message);
+      toast.error(newError?.message);
       if (error.response && error.response.status === 404) {
         throw new Error("User not found");
       } else {
@@ -172,7 +172,7 @@ export const getAuthMe = createAsyncThunk<any, MyData, { state: RootState }>(
     } catch (error: any) {
       const { data, status } = error.response;
       let newError: any = { message: data.message[0] };
-      toast.dark(newError.message);
+      toast.error(newError.message);
       if (error.response && error.response.status === 404) {
         throw new Error("User not found");
       } else {
@@ -206,7 +206,7 @@ export const webLogout = createAsyncThunk<any, AuthData, { state: RootState }>(
         Cookies.remove("accessToken");
         Cookies.remove("refreshToken");
         Cookies.remove("role");
-        toast.dark("Logout successfully!");
+        toast.info("Logout successfully!");
         params.callback();
         return data;
       } else {
@@ -215,7 +215,7 @@ export const webLogout = createAsyncThunk<any, AuthData, { state: RootState }>(
     } catch (error: any) {
       const { data, status } = error.response;
       let newError: any = { message: data.message[0] };
-      toast.dark(newError.message);
+      toast.error(newError.message);
       if (error.response && error.response.status === 404) {
         throw new Error("User not found");
       } else {
