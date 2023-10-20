@@ -70,3 +70,4 @@ function DefaultLayouts(props: Props) {
 }
 
 export default DefaultLayouts;
+// export default withAuthentication(DefaultLayouts)

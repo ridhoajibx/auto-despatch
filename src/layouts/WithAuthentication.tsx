@@ -1,6 +1,6 @@
 // withAuthentication.tsx
 import { useAppDispatch, useAppSelector } from '@/redux/Hooks';
-import { selectAuth } from '@/redux/features/AuthenticationReducers';
+import { getAuthMe, selectAuth } from '@/redux/features/AuthenticationReducers';
 import React, { ComponentType, useEffect } from 'react';
 import Cookies from "js-cookie";
 import { useNavigate } from 'react-router-dom';
@@ -19,6 +19,7 @@ const withAuthentication = (WrappedComponent: ComponentType) => {
         // dispatch(loginUser()); // Load user data
         // Or redirect to login
         // history.push('/login');
+        dispatch(getAuthMe({ token, callback: () => navigate("/login") }))
         navigate("/login")
       }
     }, [token]);

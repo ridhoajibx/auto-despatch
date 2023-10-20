@@ -203,10 +203,10 @@ export const webLogout = createAsyncThunk<any, AuthData, { state: RootState }>(
       const response = await axios.get("auth/logout", config);
       const { data, status } = response;
       if (status == 200) {
-        toast.dark("Logout successfully!");
         Cookies.remove("accessToken");
         Cookies.remove("refreshToken");
-        Cookies.remove("roles");
+        Cookies.remove("role");
+        toast.dark("Logout successfully!");
         params.callback();
         return data;
       } else {
@@ -340,29 +340,29 @@ export const authSlice = createSlice({
       })
 
       // logout
-      // .addCase(webLogout.pending, (state) => {
-      //   return {
-      //     ...state,
-      //     pending: true,
-      //   };
-      // })
-      // .addCase(webLogout.fulfilled, (state, { payload }) => {
-      //   state.isLogin = false;
-      //   state.pending = false;
-      //   state.error = false;
-      //   state.data.user = {};
-      //   state.data.roles = "";
-      //   state.data.accessToken = "";
-      //   state.data.refreshToken = "";
-      // })
-      // .addCase(webLogout.rejected, (state, { error }) => {
-      //   return {
-      //     ...state,
-      //     pending: false,
-      //     error: true,
-      //     message: error.message,
-      //   };
-      // })
+      .addCase(webLogout.pending, (state) => {
+        return {
+          ...state,
+          pending: true,
+        };
+      })
+      .addCase(webLogout.fulfilled, (state, { payload }) => {
+        state.isLogin = false;
+        state.pending = false;
+        state.error = false;
+        state.data.user = {};
+        state.data.roles = "";
+        state.data.accessToken = "";
+        state.data.refreshToken = "";
+      })
+      .addCase(webLogout.rejected, (state, { error }) => {
+        return {
+          ...state,
+          pending: false,
+          error: true,
+          message: error.message,
+        };
+      })
 
       // auth-me
       .addCase(getAuthMe.pending, (state) => {

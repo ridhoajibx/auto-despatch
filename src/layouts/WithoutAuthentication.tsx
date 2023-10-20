@@ -19,7 +19,6 @@ const withoutAuthentication = (WrappedComponent: ComponentType) => {
         // dispatch(loginUser()); // Load user data
         // Or redirect to login
         // history.push('/login');
-        dispatch(getAuthMe({ token, callback: () => navigate("/login") }))
         navigate("/")
       }
     }, [token]);

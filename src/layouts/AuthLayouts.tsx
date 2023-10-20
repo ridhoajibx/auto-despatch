@@ -1,8 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/Hooks";
-import { getAuthMe, selectAuth } from "@/redux/features/AuthenticationReducers";
 import withoutAuthentication from "./WithoutAuthentication";
 import { Spinner } from "@nextui-org/react";
 
@@ -57,5 +54,5 @@ const AuthLayouts: React.FC<Props> = (props) => {
   );
 }
 
-export default AuthLayouts;
-// export default withoutAuthentication(AuthLayouts);
+// export default AuthLayouts;
+export default withoutAuthentication(AuthLayouts);

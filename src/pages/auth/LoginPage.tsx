@@ -67,8 +67,6 @@ export const LoginPage: React.FC = () => {
     }))
   };
 
-  console.log(errors.username, "error");
-
   return (
     <DefaultLayouts
       title="Login"
