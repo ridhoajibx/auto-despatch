@@ -40,10 +40,10 @@ const HeaderTemperature = (props: any) => {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#FF0000" />
-          <stop offset="0.229167" stop-color="#FF9B2B" />
-          <stop offset="0.515625" stop-color="#FFEC42" />
-          <stop offset="0.723958" stop-color="#28EC30" />
-          <stop offset="0.994792" stop-color="#28D4EC" />
+          <stop offset="0.229167" stopColor="#FF9B2B" />
+          <stop offset="0.515625" stopColor="#FFEC42" />
+          <stop offset="0.723958" stopColor="#28EC30" />
+          <stop offset="0.994792" stopColor="#28D4EC" />
         </linearGradient>
       </defs>
     </svg>
