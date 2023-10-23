@@ -37,7 +37,7 @@ function DefaultLayouts(props: Props) {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
-  if (loading)
+  if (loading) {
     return (
       <div
         id="preloader"
@@ -46,6 +46,7 @@ function DefaultLayouts(props: Props) {
         <Spinner label="Loading..." color="primary" />
       </div>
     );
+  }
 
   return (
     <div className="">

@@ -6,6 +6,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import { getAuthMe, selectAuth } from "./redux/features/AuthenticationReducers";
+import { Spinner } from "@nextui-org/react";
+import "react-datepicker/dist/react-datepicker.css";
 
 const App: React.FC = () => {
   const API_URL = import.meta.env.VITE_APP_API_URL;

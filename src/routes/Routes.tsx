@@ -4,6 +4,7 @@ import {
   Navigate,
   Outlet,
   Route,
+  useLocation,
 } from "react-router-dom";
 import Dashboard from "../pages/dashboard";
 import Monitoring from "@/pages/monitoring";
@@ -12,32 +13,36 @@ import Datalog from "@/pages/datalog";
 import { LoginPage } from "@/pages/auth/LoginPage";
 
 type RoutesProps = {
-  isLogin: boolean
+  isLogin: boolean;
+  redirectPath?: string
 };
 
 // const isLogin = true
 
 const PrivateRoute = ({ isLogin } : RoutesProps) => {
-  if (!isLogin) return <Navigate to={"/login"} replace />;
+  let location = useLocation();
+  if (!isLogin) return <Navigate to={"/login"} state={{ from: location }} replace />;
   return <Outlet />;
 };
 
 const PublicRoute = ({ isLogin }: RoutesProps) => {
-  if (isLogin) return <Navigate to={"/"} replace />;
+  let location = useLocation();
+  let locationBefore = location?.state?.from?.pathname || "/"
+  if (isLogin) return <Navigate to={locationBefore} replace />;
   return <Outlet />;
 };
 
 const Routes = ({isLogin}: RoutesProps) => {
   return (
     <Router>
-      <Route element={<PublicRoute isLogin={isLogin} />}>
-        <Route path="/login" element={<LoginPage />} />
-      </Route>
       <Route element={<PrivateRoute isLogin={isLogin} />}>
-        <Route path="/" element={<Monitoring />} />
+        <Route index path="/" element={<Monitoring />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/data-log" element={<Datalog />} />
         <Route path="/users" element={<Users />} />
+      </Route>
+      <Route element={<PublicRoute isLogin={isLogin} />}>
+        <Route path="/login" element={<LoginPage />} />
       </Route>
     </Router>
   );

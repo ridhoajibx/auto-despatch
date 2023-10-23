@@ -69,7 +69,7 @@ const Dashboard: React.FC = () => {
           <div className="ml-auto">
             <div className="w-full">
               <label className="w-full text-gray-5 overflow-hidden">
-                <div className="relative">
+                <div className="relative z-999">
                   <DatePicker
                     selectsRange={true}
                     startDate={startDate}
@@ -83,7 +83,7 @@ const Dashboard: React.FC = () => {
                     peekNextMonth
                     showMonthDropdown
                     showYearDropdown
-                    className={`text-sm lg:text-md w-full text-gray-5 rounded-lg border border-stroke bg-transparent py-3 pl-12 pr-6 outline-none focus:border-primary focus-visible:shadow-none focus:bg-white`}
+                    className={`z-9999 text-sm lg:text-md w-full text-gray-5 rounded-lg border border-stroke bg-transparent py-3 pl-12 pr-6 outline-none focus:border-primary focus-visible:shadow-none focus:bg-white`}
                   />
                   <MdOutlineCalendarToday className="absolute left-4 top-2.5 h-6 w-6 text-gray-5" />
                 </div>
@@ -136,7 +136,9 @@ const Dashboard: React.FC = () => {
                 {/* monthly filling */}
                 <Card className="">
                   <CardHeader className="w-full">
-                    <div className="w-full font-bold">Monthly Filling Activity</div>
+                    <div className="w-full font-bold">
+                      Monthly Filling Activity
+                    </div>
                   </CardHeader>
 
                   <CardBody className="p-0">
@@ -149,7 +151,9 @@ const Dashboard: React.FC = () => {
                 {/* monthly temperature */}
                 <Card className="">
                   <CardHeader className="w-full">
-                    <div className="w-full font-bold">Monthly Temperature Activity</div>
+                    <div className="w-full font-bold">
+                      Monthly Temperature Activity
+                    </div>
                   </CardHeader>
 
                   <CardBody className="p-0">
@@ -164,11 +168,9 @@ const Dashboard: React.FC = () => {
 
           <div className="w-full flex flex-col gap-4 sm:gap-6">
             <Card className="w-full">
-              <CardHeader>
-                <h3 className="text-sm lg:text-lg font-bold -mb-10">
-                  Avg Temperature
-                </h3>
-              </CardHeader>
+              <h3 className="text-sm lg:text-lg font-bold -mb-10 p-4">
+                Avg Temperature
+              </h3>
               <CardBody className="relative p-0">
                 <HeaderTemperature className="w-full h-full absolute inset-y-3 sm:-inset-y-5 lg:inset-y-2 inset-x-0 p-4 sm:p-2 " />
                 <GaugeChart
@@ -228,7 +230,7 @@ const Dashboard: React.FC = () => {
 
             <Card className="w-full">
               <CardHeader>
-                <h3 className="text-sm lg:text-lg font-bold -mb-10">
+                <h3 className="z-0 text-sm lg:text-lg font-bold -mb-10">
                   Avg Temperature
                 </h3>
               </CardHeader>
