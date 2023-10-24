@@ -1,0 +1,28 @@
+{
+    "routes" : [
+        {
+            "src": "/",
+            "dest": "/"
+        },
+        {
+            "src": "/login",
+            "dest": "/"
+        },
+        {
+            "src": "/live-monitoring",
+            "dest": "/"
+        },
+        {
+            "src": "/dashboard",
+            "dest": "/"
+        },
+        {
+            "src": "/data-log",
+            "dest": "/"
+        },
+        {
+            "src": "/users",
+            "dest": "/"
+        }
+    ]
+}
