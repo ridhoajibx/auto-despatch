@@ -367,9 +367,9 @@ export default function Tables() {
       classNames={{
         wrapper: "max-h-[382px]",
       }}
-      // selectedKeys={selectedKeys}
-      // onSelectionChange={setSelectedKeys}
-      // selectionMode="multiple"
+      selectedKeys={selectedKeys}
+      onSelectionChange={setSelectedKeys}
+      selectionMode="none"
       sortDescriptor={sortDescriptor}
       topContent={topContent}
       topContentPlacement="outside"
