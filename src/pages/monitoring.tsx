@@ -187,7 +187,7 @@ const Monitoring: FC = () => {
                       </div>
 
                       <div className="w-full flex items-center justify-between">
-                        <p className="text-sm text-gray-5">CCapacity</p>
+                        <p className="text-sm text-gray-5">Capacity</p>
                         <p className="text-sm font-bold">200 L</p>
                       </div>
 
