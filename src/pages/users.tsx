@@ -1,3 +1,4 @@
+import Tables from "@/components/tables/server/Tables";
 import DefaultLayouts from "@/layouts";
 import { Header } from "@/layouts/Header";
 import moment from "moment";
@@ -18,7 +19,9 @@ const Users: React.FC = () => {
     >
       <Header />
       <div className="relative w-full h-full container mx-auto p-4">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, odit!
+        <div className="w-full bg-white p-4 rounded-lg">
+          <Tables />
+        </div>
       </div>
     </DefaultLayouts>
   );

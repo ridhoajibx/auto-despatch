@@ -87,7 +87,7 @@ const Monitoring: FC = () => {
           </div>
           <ScrollShadow
             hideScrollBar
-            className="bg-[#DAE3EB] rounded-lg w-full sm:col-span-4 max-h-[650px]"
+            className="bg-[#DAE3EB] rounded-lg w-full sm:col-span-4 max-h-[750px]"
           >
             <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2 p-4">
               <div className="w-full flex flex-col gap-3 sm:gap-6">
