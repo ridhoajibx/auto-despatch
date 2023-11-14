@@ -49,7 +49,7 @@ const App: React.FC = () => {
     socket.emit('getFillingStatus', 'Pesan notifikasi dari klien');
   }, [])
 
-  // console.log(fooEvents.map(e => e?.slotPosition), 'notification')
+  console.log(fooEvents.map(e => e?.slotPosition), 'notification')
 
   return (
     <BrowserRouter>
